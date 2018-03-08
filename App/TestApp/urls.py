@@ -2,7 +2,7 @@
 from .views import *
 
 urls = [
-    ('/', my_test),
+    ('/', index),
     #('/', my_test, ['GET','POST'])
 ]
 

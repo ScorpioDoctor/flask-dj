@@ -55,21 +55,21 @@
 除了globals.py里面的几个变量， 其他的flask该怎么用，就怎么用
 
 
-
->```python
+```python
 from flask_dj.globals import *
 ```
-pyinotify动态导入, 懒得写了, flask_dj支持导入包
 
->```python
+pyinotify动态导入, 懒得写了, flask_dj支持导入包
+```python
 app.import_app('', 'App.TestApp')
 ```
-静态目录，模板也懒得写了，自己在蓝图配置吧
 
->```python
+静态目录，模板也懒得写了，自己在蓝图配置吧
+```python
 app = Blueprint('TestApp', __name__)
 ```
 
-渣渣菜鸟一个，我也学着用点外号
+功能:
 
-by: Alpha3 
+仿django目录结构
+添加后台线程
