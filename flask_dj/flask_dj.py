@@ -1,9 +1,10 @@
 
-from flask import Flask
+from flask import Flask, g
 from importlib import import_module
 from .globals import *
 from .config import *
 from App.Base.models import User
+from .admin import IndexView            # 后台主页
 
 class FlaskDJ(Flask):
     def __init__(self, *args, **kwargs):
@@ -13,25 +14,30 @@ class FlaskDJ(Flask):
         self.config.from_object(__name__)
 
         # 初始化功能库
-        db.init_app(self)
-        login_manager.init_app(self)
-        babel.init_app(self)
-        admin.init_app(self)
+        db.init_app(app=self)
+        login_manager.init_app(app=self)
+        babel.init_app(app=self)
+        bootstrap.init_app(app=self)
+        admin.init_app(app=self, index_view=IndexView())
+        moment.init_app(app=self)
+        migrate.init_app(app=self)
 
         # 导入蓝图
         for module_name, module_url in INSTALL_APP.items():
             self.import_app(module_url, module_name)
 
-        # 初始化数据表
-        self.app_context().push()
-        db.create_all(app=self)
-        
-        # 创建超级用户
-        User.query.filter_by(username=SUPER_USER['USERNAME']).delete(synchronize_session=False)
-        db.session.commit()
-        user = User(username=SUPER_USER['USERNAME'], password=SUPER_USER['PASSWORD'])
-        db.session.add(user)
-        db.session.commit()
+
+
+        @self.before_first_request
+        def _before_first_request():
+            # 初始化数据表
+            db.create_all()
+
+            # 创建超级用户
+            User.query.filter_by(username=SUPER_USER['USERNAME']).delete(synchronize_session=False)
+            user = User(username=SUPER_USER['USERNAME'], password=SUPER_USER['PASSWORD'])
+            db.session.add(user)
+            db.session.commit()
 
 
 

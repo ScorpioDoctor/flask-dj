@@ -1,9 +1,9 @@
 from flask import  Blueprint, request, jsonify, render_template, redirect, url_for
 from flask_login import login_user, logout_user, current_user
 from flask_dj.globals import admin
-
 from .models import db, SendSMS, ApplyInfo, User
 from .utils import send_vcode
+
 
 
 app = Blueprint('Base', __name__)
@@ -11,6 +11,7 @@ app = Blueprint('Base', __name__)
 
 @app.route('/')
 def index():
+    User.query.all()
     return 'this is flask_dj', 200
 
 @app.route('/logout')
