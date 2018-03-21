@@ -6,5 +6,5 @@ app = FlaskDJ(__name__)
 if __name__ == '__main__':
     if DEBUG:
         app.jinja_env.auto_reload = True
-    app.run()
+    app.run(host="localhost", port=5000)
 
