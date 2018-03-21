@@ -5,6 +5,7 @@ import requests,random,json
 def _sendSms(phone, code):
     return True
 
+
 def send_vcode(phone):
     vcode = _generate_vcode()
     status = _sendSms(phone, vcode)
