@@ -3,7 +3,7 @@ from flask import Flask, g
 from importlib import import_module
 from .globals import *
 from .config import *
-from App.Base.models import User
+from App.Base.model import User
 from .admin import IndexView            # 后台主页
 
 class FlaskDJ(Flask):
@@ -20,14 +20,14 @@ class FlaskDJ(Flask):
         bootstrap.init_app(app=self)
         admin.init_app(app=self, index_view=IndexView())
         moment.init_app(app=self)
-        migrate.init_app(app=self)
+        migrate.init_app(app=self, db=db)
+        
 
         # 导入蓝图
         for module_name, module_url in INSTALL_APP.items():
             self.import_app(module_url, module_name)
 
-
-
+        
         @self.before_first_request
         def _before_first_request():
             # 初始化数据表
@@ -40,13 +40,12 @@ class FlaskDJ(Flask):
             db.session.commit()
 
 
-
     def import_app(self, app_url, app_name):
             (module_url, module_name) = app_url, app_name
 
             module_admin = import_module('%s.%s' % (module_name, 'admin'))
             module_views = import_module('%s.%s' % (module_name, 'views'))
-            module_models = import_module('%s.%s' % (module_name, 'models'))
+            module_model = import_module('%s.%s' % (module_name, 'model'))
             module_urls = import_module('%s.%s' % (module_name, 'urls'))
 
             # 加载后台任务模块

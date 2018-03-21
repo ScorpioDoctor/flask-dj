@@ -1,7 +1,7 @@
 from flask import  Blueprint, request, jsonify, render_template, redirect, url_for
 from flask_login import login_user, logout_user, current_user
 from flask_dj.globals import admin
-from .models import db, SendSMS, ApplyInfo, User
+from .model import db, SendSMS, ApplyInfo, User
 from .utils import send_vcode
 
 

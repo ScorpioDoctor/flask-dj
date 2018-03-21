@@ -23,14 +23,18 @@ ADMIN_NAME = 'hello'
 TEMPLATE_MODE = "bootstrap3"
 
 
+# manage.py
+# flup多进程，这里我用的是fcgi
+MULTIPROCESS = True
+
 #--------------------------------------------------
 # 下面是Flask自带的app.config
 
-# ip端口(禁止使用，否则flask-login失效)
-# SERVER_NAME = '127.0.0.1:5000'
+# ip端口(调试模式下, flask-login有可能会导致admin无法登录，如果出问题，请把这个禁止，用app.run(host=ip, host=端口))
+SERVER_NAME = 'localhost:5000'
 
 # 调试模式
-DEBUG = True
+DEBUG = False
 
 # 安全key
 SECRET_KEY = 'c20ad4d76fe97759aa27a0c99bff6712'
