@@ -3,6 +3,8 @@
 
 使用vscode安装依赖后直接能运行
 
+syncdb.bat是更新数据库表的，不会原始删除数据，除非你把表名给删除了
+
 ### python 3.6.5 安装依赖
 ```bash
     pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment
