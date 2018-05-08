@@ -6,20 +6,16 @@ from flask_sqlalchemy import SQLAlchemy # 数据库
 from flask_bootstrap import Bootstrap   # 前端框架
 from flask_migrate import Migrate       # 数据库迁移
 from flask_moment import Moment         # 全球化统一时间
+app = None # 这个不能改
 
-from .config import *
 
-# 这里只能写flask扩展插件
+from .config import * # 下面注册插件可能用到某些config的变量
+
+# 这里注册你的扩展插件
 db = SQLAlchemy()
 login_manager = LoginManager()
-babel = Babel(default_locale=BABEL_DEFAULT_LOCALE)
-admin = Admin(name=ADMIN_NAME, template_mode=TEMPLATE_MODE)
+babel = Babel()
+admin = Admin()
 bootstrap = Bootstrap()
 migrate = Migrate()
 moment = Moment()
-
-
-
-
-
-

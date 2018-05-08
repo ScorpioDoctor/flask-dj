@@ -1,10 +1,7 @@
-from flask_dj import FlaskDJ
-from flask_dj.config import DEBUG
-
-app = FlaskDJ(__name__)
-
+from flask import Flask
+from flask_dj.app import initFlask
 if __name__ == '__main__':
-    if DEBUG:
-        app.jinja_env.auto_reload = True
+    app = Flask(__name__)
+    initFlask(app)
     app.run()
 

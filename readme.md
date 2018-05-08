@@ -1,31 +1,33 @@
-# flask-dj  [gpl-2.0]
+
 # flask结构化导入蓝图
 
-只需要在config.py 插入一行代码，就能轻松解决循环导入的问题
+使用vscode安装依赖后直接能运行
 
-```python
-# 插入蓝图
-INSTALL_APP = {
-    'App.Base': '', # 蓝图和url
-}
+### python 3.6.5 安装依赖
+```bash
+    pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment
 ```
-
-Moment只做初始化，未配置
-计划加入邮件，权限, WTF
-```python
-from flask_moment import Moment         # 全球化统一时间
+### 依赖对应的版本
 ```
-
-只需要在globals.py定义flask扩展的全局变量
-把base文件夹复制一份，然后在config.py插入"App.xxx"
-然后改一下复制的代码flask改怎么用就怎么用
-
-
-除了以下两句代码，请不要胡乱导入flask_dj文件夹中的其他文件
-如果需要访问config的变量，正确的做法是app对象中的config
-```python
-from flask_dj import app
-from flask_dj.globals import *
+Babel            2.5.3
+click            6.7
+Flask            1.0.2
+Flask-Admin      1.5.1
+Flask-BabelEx    0.9.3
+Flask-Bootstrap  3.3.7.1
+Flask-Login      0.4.1
+Flask-Migrate    2.1.1
+Flask-Moment     0.6.0
+Flask-SQLAlchemy 2.3.2
+pip              10.0.1
+SQLAlchemy       1.2.7
 ```
-
-
+### 防止导入循环，请遵循规则
+```python 
+    # 顶级目录的app.py 一般不需要修改
+    # flask_dj目录
+    #   app.py      禁止导入models.py，可以导入蓝图
+    #   models.py   只能在蓝图导入，所有蓝图的都必须写在这
+    #   globals.py  只能定义flask扩展以及类初始化，不能写其他代码
+    #   config.py   只能写静态变量
+```
