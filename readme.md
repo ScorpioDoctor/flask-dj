@@ -9,12 +9,12 @@ syncdb.bat是更新数据库表的，不会原始删除数据，除非你把表�
     cd 你的工程
     manage      # 设置flask变量
     flask --h
-    flask runfcgi
+    flask runfcgi 
 ```
 
 ### python 3.6.5 安装依赖
 ```bash
-    pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment
+    pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment flup-py3 flask-cli
 ```
 ### 依赖对应的版本
 ```
