@@ -1,8 +1,10 @@
 
-# flask结构化导入蓝图
+# flask-dj 
+![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168.svg) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg) 
+
+> 结构化导入蓝图, 解决导入冲突问题
 
 使用vscode安装依赖后直接能运行
-
 syncdb.bat是更新数据库表的，不会原始删除数据，除非你把表名给删除了
 
 ```bash
