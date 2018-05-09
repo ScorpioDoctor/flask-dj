@@ -5,7 +5,6 @@ import flask_dj.config as config
 from flask_dj.globalvar import *
 import flask_dj.globalvar as globalvar
 
-
 from blueprint.test import blue_app
 
 

@@ -2,8 +2,6 @@
 # 下面是Flask自带的app.config
 
 # ip端口(注册localhost和127.0.0.1是不通用的)
-
-
 SERVER_NAME = 'localhost:5000' # 如果是fcgi设置错误，默认为0.0.0.0: 80
 
 
@@ -15,7 +13,7 @@ fcgi_multiplexed = True # 这个我也不知道干嘛用
 
 
 # 调试模式
-DEBUG = False
+DEBUG = True
 
 # 安全key  flask-login用到
 SECRET_KEY = 'c20ad4d76fe97759aa27a0c99bff6712'
@@ -27,3 +25,9 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 # Jinja2模板自动重载(好像没鸟用),已经写在globals里面了
 # TEMPLATES_AUTO_RELOAD = True
 
+# babel 国际化
+BABEL_DEFAULT_LOCALE = "zh_cn"
+BABEL_DEFAULT_TIMEZONE = "Asia/Shanghai"
+
+# admin
+ADMIN_NAME = "后台管理"

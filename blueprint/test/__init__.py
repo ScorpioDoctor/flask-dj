@@ -1,12 +1,14 @@
+
+import os
 from flask import Blueprint
-from flask_dj.models import db, User
 
-blue_app = Blueprint("test", __name__)
+# 懒得写，直接用目录名代替，反正目录名称不会重复
+blueprint_name = os.path.dirname(__file__)
+blueprint_name = os.path.basename(blueprint_name)
 
-@blue_app.route("/")
-def index():
-    return "hello, world"
+blue_app = Blueprint(blueprint_name, __name__)
 
-@blue_app.route("/add/<info>")
-def index2(info):
-    return "hello, world"
+
+# 导入生效
+from . import models, views
+
