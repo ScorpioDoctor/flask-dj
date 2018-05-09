@@ -8,6 +8,16 @@
 syncdb.bat是更新数据库表的，不会原始删除数据，除非你把表名给删除了
 
 
+### 运行测试
+```bash
+    cd 你的目录
+    manage
+    flask run    
+```
+
+### 调试
+> 用vscode调试app.py就行, 注意不是flask_fj目录的app.py
+
 ### python 3.6.5 安装依赖
 ```bash
     pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment flup-py3 flask-cli
