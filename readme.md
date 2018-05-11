@@ -1,5 +1,5 @@
 
-# flask-dj 
+# flask-dj [0.1.1]
 ![Bitbucket Pipelines branch](https://img.shields.io/bitbucket/pipelines/atlassian/adf-builder-javascript/task/SECO-2168.svg) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/Django.svg) 
 
 > 结构化导入蓝图, 解决导入冲突问题
