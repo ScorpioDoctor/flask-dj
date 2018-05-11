@@ -4,7 +4,7 @@
 
 > 结构化导入蓝图, 解决导入冲突问题
 
-> 使用vscode安装依赖后直接能运行
+> 使用vscode,且pip安装flask扩展后直接能运行
 > syncdb.bat是更新数据库表的，不会原始删除数据，除非你把表名给删除了
 > 特别注意SERVER_NAME定义为localhost:5000, 用127.0.0.1:5000是无法打开的
 > SERVER_NAME定义为0.0.0.0:5000，用localhost和127.0.0.1都可以打开
@@ -14,19 +14,22 @@
 ```bash
     cd 你的目录
     manage
+    flask
     flask run    
 ```
 
 ### 调试
 > 用vscode调试app.py就行, 注意不是flask_fj目录的app.py
 
-### python 3.6.5 安装依赖
+### python 3.6.5 安装依赖(用cmd或者终端执行)
 ```bash
-    pip install flask flask_login flask_babelex flask_admin flask_sqlalchemy flask_bootstrap flask_migrate flask_moment flup-py3 flask-cli
+    pip install flask==1.0.2 flask_login==0.4.1 flask_babelex==0.9.3 flask_admin==1.5.1 flask_sqlalchemy==2.3.2 flask_bootstrap==3.3.7.1 flask_migrate==2.1.1 flask_moment==0.6.0 flup-py3==1.0.3 flask-cli==0.4.0
 ```
-### 依赖对应的版本
+
+### python所需依赖对应的版本(用pip安装)
 ```
-Babel            2.5.3
+pip              10.0.1
+
 click            6.7
 Flask            1.0.2
 Flask-Admin      1.5.1
@@ -36,8 +39,8 @@ Flask-Login      0.4.1
 Flask-Migrate    2.1.1
 Flask-Moment     0.6.0
 Flask-SQLAlchemy 2.3.2
-pip              10.0.1
-SQLAlchemy       1.2.7
+flup-py3         1.0.3
+Flask-CLI        0.4.0
 ```
 
 ### 防止导入循环，请遵循规则
@@ -66,6 +69,7 @@ SQLAlchemy       1.2.7
     #       models.py           蓝图model
     #       views.py            蓝图的视图
 
+
 ```
 
 ### 数据库初始化
@@ -73,17 +77,19 @@ SQLAlchemy       1.2.7
 ```bash
     cd 你的工程
     manage      # 设置flask变量
-    flask --h
+    flask
     flask db init
 ```
-
-### 数据库迁移
+ 
+### 数据库同步 (syncdb.bat)
 > 同步表结构,保留数据(注意删除字段和删表除外)
+
 ```bash
     cd 你的工程
     manage      # 设置flask变量
-    flask --h
+    flask
     flask db migrate
+    flask db upgrade
 ```
 
 ### 部署模式
@@ -92,6 +98,16 @@ SQLAlchemy       1.2.7
 ```bash
     cd 你的工程
     manage      # 设置flask变量
-    flask --h
+    flask
     flask runfcgi 
+```
+
+### 超级傻瓜教程
+```
+    1.卸载你的电脑上所有python，且把目录删除干净
+    2.安装python 3.6.5
+    3.执行pip安装扩展，命令在上面
+    4.打开你的调试器，设置app.py为启动文件
+    5.没了，就这样
+    6.看readme, 看注释，别JB乱写
 ```

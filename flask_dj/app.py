@@ -25,7 +25,7 @@ def initFlask(app):
     babel.init_app(app)
     admin.init_app(app)
     bootstrap.init_app(app)
-    migrate.init_app(app)
+    migrate.init_app(app, db=db)
     moment.init_app(app)
 
     # 这里注册你的中间件

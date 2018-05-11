@@ -3,11 +3,13 @@ from . import blue_app
 from .models import db, User
 from flask import render_template
 
-@blue_app.route("/")
+
+
+# 方法一: 装饰器
+@blue_app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("blueprint/test/index.html")
 
-@blue_app.route("/add/<info>")
-def index2(info):
-    
+# 方法二: 可以实现类似django的urls.py 
+def test():
     return "hello, world"
