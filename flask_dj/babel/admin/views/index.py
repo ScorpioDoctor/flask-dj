@@ -9,23 +9,15 @@ from flask_admin import AdminIndexView, expose
 class DJAdminIndexView(AdminIndexView):
     def is_accessible(self):
         """
-            Override this method to add permission checks.
-
-            Flask-Admin does not make any assumptions about the authentication system used in your application, so it is
-            up to you to implement it.
-
-            By default, it will allow access for everyone.
+        校验权限是否可登陆
         """
         return True
     def inaccessible_callback(self, name, **kwargs):
         """
-            Handle the response to inaccessible views.
-
-            By default, it throw HTTP 403 error. Override this method to
-            customize the behaviour.
+        权限校验失败,执行哪些跳转
         """
         return abort(403)
-        
+
     # 返回原始首页
     @expose('/')
     def index(self):
