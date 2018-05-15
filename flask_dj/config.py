@@ -21,7 +21,7 @@ SECRET_KEY = 'c20ad4d76fe97759aa27a0c99bff6712'
 # 数据库
 SQLALCHEMY_DATABASE_URI = 'sqlite:///./data.db'
 SQLALCHEMY_TRACK_MODIFICATIONS = True
-
+SQLALCHEMY_ECHO = True
 # Jinja2模板自动重载(好像没鸟用),已经写在globals里面了
 # TEMPLATES_AUTO_RELOAD = True
 
@@ -31,3 +31,4 @@ BABEL_DEFAULT_TIMEZONE = "Asia/Shanghai"
 
 # admin
 ADMIN_NAME = "后台管理"
+

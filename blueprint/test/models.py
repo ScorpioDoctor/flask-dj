@@ -2,20 +2,18 @@
 from flask_dj.models import db, User # 用到全局model请在这导入，如果没用到，只需要导入db就行
 
 
-class test_model2(db.Model):
-    __tablename__ = "test_model2"
-
+class LoginUser(db.Model):
+    __tablename__ = "LoginUser"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64))
-    children = db.relationship("test_model", lazy="dynamic")
+    password = db.Column(db.String(64))
+    proxyManager = db.Column(db.Integer, db.ForeignKey("ProxyManager.id"))
 
 
-class test_model(db.Model):
-    __tablename__ = "test_model"
-
+class ProxyManager(db.Model):
+    __tablename__ = "ProxyManager"
     id = db.Column(db.Integer, primary_key=True)
-    test_model_username = db.Column(db.String(64))
-    test_model_password = db.Column(db.String(64))
+    proxyName = db.Column(db.String(64))
+    allUser = db.relationship("LoginUser", lazy="dynamic")
 
-    a = db.Column(db.Integer, db.ForeignKey("test_model2.id"))
 
