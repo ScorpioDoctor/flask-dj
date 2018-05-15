@@ -9,5 +9,5 @@ blue_app = Blueprint(blueprint_name, __name__)
 
 
 # 导入生效, 格式固定
-from . import models, views, urls
+from . import models, admin, views, urls
 
