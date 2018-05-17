@@ -1,15 +1,16 @@
 from flask import Flask
-from flask_dj.app import initFlask
-from flask_dj.globalvar import db
+from myproject.app import MyFlaskApp
+from myproject import config as config_module
 
-app = Flask(__name__)
-initFlask(app)
+
 if __name__ == '__main__':
-    from flask_dj.babel.admin import regisiter
-    """ 查看sql语句
+    app = MyFlaskApp(Flask(__name__), 
+                    config_module=config_module,
+                    blueprint_dirname="blueprint")
+    """
     app.app_context().push()
-    db.drop_all()
-    db.create_all()
+    app.db.drop_all()
+    app.db.create_all()
     """
     app.run()
 
