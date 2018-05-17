@@ -79,3 +79,9 @@ Flask-CLI        0.4.0
     5.没了，就这样
     6.看readme, 看注释，别JB乱写
 ```
+
+### 怎么添加蓝图
+```
+    把blueprint那个test目录复制一遍就行
+    如果blueprint_app_url的数组长度>1 就会注册蓝图
+```

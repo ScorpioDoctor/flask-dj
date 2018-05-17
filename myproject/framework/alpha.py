@@ -14,7 +14,7 @@ class FlaskAlpha:
         self.init_middleware()
         self.init_blueprint(blueprint_dirname)
         self.init_done()
-        
+
     def run(self, *args, **kwargs):
         self.flask_app.run(*args, **kwargs)
 
@@ -44,8 +44,9 @@ class FlaskAlpha:
         dirs = os.listdir(blueprint_dirname)
         for _dir in dirs:
             _module = import_module("{}.{}".format(blueprint_dirname, _dir))
-            _url = getattr(_module, "blueprint_app_url", None)
-            self.flask_app.register_blueprint(_module.blueprint_app, url_prefix=_url)
+            _urls = getattr(_module, "blueprint_app_url", None)
+            for _url in _urls:
+                self.flask_app.register_blueprint(_module.blueprint_app, url_prefix=_url)
 
     def regisiter_flask_ext(self, ext_name, ext_module):
         if getattr(_globals, ext_name, None) == None and \
